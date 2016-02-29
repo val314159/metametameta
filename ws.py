@@ -1,13 +1,11 @@
 #!/usr/bin/env bottle.py -b:7000 -sgevent --debug --reload ws --
 import pyjade,markdown,coffeescript
 from bottle import request,response,static_file,route,get,put,post,error
-def head(url): return route(url,method='HEAD')
 def ropen(name,ext): return open('tmpl/%s.%s'%(name,ext)).read()
 def wopen(pfx,name,txt): return open(pfx+'/'+name,'w').write(txt)
-@route('//<prefix>/<name:path>')
-def _(prefix,name): return( None if request.method=='HEAD'
-                            else static_file(name,root=prefix) )
-@put('//<prefix>/<name:path>')
+@route('/_/<prefix>/<name:path>')
+def _(prefix,name): return static_file(name,root=prefix)
+@post('/_/<prefix>/<name:path>')
 def _(prefix,name):wopen(prefix,name,request.body.read());return['ok']
 @route('/')
 @route('/<name:path>')
