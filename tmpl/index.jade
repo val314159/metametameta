@@ -9,13 +9,15 @@ html
       .xh100 { height: 100%; }
       .db { display: block; }
   body
-    button#createBuffer create buffer
-
     #out.db.b1
-      code sdfd
-    
+      code Hello.
+    button#mkdir mkdir
+    button#refreshDir refresh dir
+    button#createBuffer create buffer
+    .ls-la-viewport.b1#dir-viewport
+      i  Loading...
     article hello there
-
     script(src="util.js")
     script(src="main.js")
+    script refreshDir("#dir-viewport")
     hr
