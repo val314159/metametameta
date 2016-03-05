@@ -1,7 +1,7 @@
 var gensym=function(){var _n=0;return function(){return 'sym'+(_n++)}}();
 function mseta(elt,args){
-    for(var n = 1; n<args.length; n += 2)
-	if (n+1<args.length) {
+    for(var n = 1; n< args.length; n += 2)
+	if (n+1< args.length) {
 	    elt[ args[n] ] = args[n+1];
 	} else {
 	    elt.innerHTML = args[n];
@@ -17,3 +17,10 @@ function codeDiv(classes,iid){
     return newElt("div",'className',classes,
 		  "<code id='"+iid+"' class='ws-pre'>QQ\nww</code>");}
 function EDIT(x){return mset(x,'contentEditable',true);}
+
+function unescape(s){
+    return s.replace(/&lt;/g,'<').replace(/&amp;/g,'&').replace(/>/g,'>')
+}
+function escape(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'>')
+}

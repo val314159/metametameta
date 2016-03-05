@@ -2,7 +2,10 @@
 import pyjade,markdown,coffeescript,os,sys,json
 from bottle import request,response,static_file,route,get,put,post,error
 def ropen(name,ext): return open('tmpl/%s.%s'%(name,ext)).read()
-def wopen(pfx,name,txt): return open(pfx+'/'+name,'w').write(txt)
+def wopen(pfx,name,txt):# return open(pfx+'/'+name,'w').write(txt)
+    print "RET", repr(txt)
+    ret = open(pfx+'/'+name,'w').write(txt)
+    return ret
 @route('/_/<prefix>/<name:path>')
 def _(prefix,name): return static_file(name,root=prefix,mimetype='text/plain')
 @post('/_/<prefix>/<name:path>')
