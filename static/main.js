@@ -1,4 +1,7 @@
-function appendEditor(elt,pathname){
+function appendEditor(pelt,pathname){
+    var lblDiv=gensym(),lblKill=gensym();
+    var elt=newElt("div",'id',lblDiv);
+    pelt.appendChild(elt);
     pathname = pathname || "/static/FILENAME";
     var lbl0=gensym(),lbl1=gensym(),lbl2=gensym()
     var lblD=gensym(),lblE=gensym(),lblP=gensym()
@@ -9,6 +12,7 @@ function appendEditor(elt,pathname){
     elt.appendChild(ID(lbl1,newElt('button','save')))
     elt.appendChild(ID(lbl2,newElt('button','load')))
     elt.appendChild(ID(lblP,newElt('button','preview')))
+    elt.appendChild(ID(lblKill,newElt('button','kill')))
     function filename(){return $('#'+lbl0).html()}
     function filedata(){return $('#'+lblE).html()}
     function url(){
@@ -26,6 +30,7 @@ function appendEditor(elt,pathname){
 	    $('#'+lblE).html( escape(data) )
 	}) }
     $('#'+lbl2).click(load);
+    $('#'+lblKill).click(function(ev){$('#'+lblDiv).remove()});
     $('#'+lblP).click(function(ev){
 	var arr = filename().split('/')
 	if (arr[0]=='')  arr = arr.splice(1)
