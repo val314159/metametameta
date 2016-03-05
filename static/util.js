@@ -15,12 +15,9 @@ function Div(){ return newElt("div"); }
 function ID(id,elt){ return mset(elt,'id',id); }
 function codeDiv(classes,iid){
     return newElt("div",'className',classes,
-		  "<code id='"+iid+"' class='ws-pre'>QQ\nww</code>");}
+		  "<code id='"+iid+"' class='ws-pre'>QQ\nww</code>")}
 function EDIT(x){return mset(x,'contentEditable',true);}
-
 function unescape(s){
-    return s.replace(/&lt;/g,'<').replace(/&amp;/g,'&').replace(/>/g,'>')
-}
+    return s.replace(/&lt;/g,'<').replace(/&amp;/g,'&').replace(/>/g,'>')}
 function escape(s){
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'>')
-}
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'>')}

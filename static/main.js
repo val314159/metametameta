@@ -3,10 +3,25 @@ function appendEditor(pelt,pathname){
     var elt=newElt("div",'id',lblDiv);
     pelt.appendChild(elt);
     pathname = pathname || "/static/FILENAME";
+    var lblLine=gensym()
     var lbl0=gensym(),lbl1=gensym(),lbl2=gensym()
     var lblD=gensym(),lblE=gensym(),lblP=gensym()
     elt.appendChild(EDIT(ID(lbl0,H3(pathname))))
     elt.appendChild(ID(lblD,codeDiv('b1 db',lblE)))
+
+    elt.appendChild((ID(lblLine,newElt("input",'style','width:100%'))));
+    function logme(s){
+	$('#'+lblLine).val(s);
+	console.log(s);
+    }
+
+    //lblE
+    var kt = new KeyThing();
+    kt.log = logme;
+    document.getElementById(lblE).onkeydown=function(e){
+	return kt.process(e);
+    };
+
     EDIT(document.getElementById(lblE))
     elt.appendChild(newElt('hr'))
     elt.appendChild(ID(lbl1,newElt('button','save')))
